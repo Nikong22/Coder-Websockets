@@ -55,6 +55,7 @@ io.on('connection', (socket) => {
 
   socket.on('nuevo', (data) => {
     mensajes.push(data);
+    fs.writeFileSync('./mensaje.txt', JSON.stringify(mensajes));
     io.sockets.emit('mensajes', mensajes)
   })
 
