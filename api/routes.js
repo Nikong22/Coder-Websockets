@@ -22,16 +22,16 @@ router.get('/productos', function (req, res) {
 });
 
 router.get("/productos/:id", (req, res) => {
-  const producto = routes_controller.getProducto(req, res) //acá buscás el producto como estás haciendo ahora
-  let tieneDatos;// hacés lo mismo que estás haciendo en /productos con este if-else para esta variable
+  const producto = routes_controller.getProducto(req, res)
+  let tieneDatos;
   if (producto) {
     tieneDatos = true
   }else{
     tieneDatos = false
   }
-  const productos = []//ese main (2 líneas más abajo) recibe un array de productos y la variable anterior, entonces en vez de pasar un objeto producto, tenés que pasar un array
-  productos.push(producto);//por eso creás el array vacío y le hacés un push del producto encontrado
-  res.render('main', { productos: productos, listExists: tieneDatos });//acá ahora se pasa un array de 1 producto (o null) y la variable tieneDatos que dice si tiene algo o no
+  const productos = []
+  productos.push(producto);
+  res.render('main', { productos: productos, listExists: tieneDatos });
 });
 
 router.post("/productos", function (req, res) {
